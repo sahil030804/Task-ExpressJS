@@ -5,6 +5,13 @@ const PORT = process.env.PORT; // access port from env file
 
 const app = express();
 
+//--------------- ACCESS JSON BODY DATA ----------------
+
+// raw file enable
+app.use(express.json());
+// UrlEncoded turn false
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/api/books", books);
 
 // Uses route module for access all routes after this url ('/api/book')

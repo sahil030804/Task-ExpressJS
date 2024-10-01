@@ -25,4 +25,41 @@ router.get("/:id", (req, res) => {
   res.status(404).json({ error: "User not found" });
 });
 
+// FOR POST/CREATE SINGLE BOOK DATA
+router.post("/", (req, res) => {
+  let { name, price } = req.body;
+
+  let newBook = {
+    id: books.length + 1,
+    name: name,
+    price: parseFloat(price),
+  };
+
+  // check name & price is written and if not give error of Please Enter Book Name & Book Rate
+  if (!name && !price) {
+    return res
+      .status(400)
+      .json({ error: "Please Enter Book Name & Book Price" });
+  }
+
+  // check name is written and if not give error if Please Enter Book Name
+  if (!name) {
+    return res.status(400).json({ error: "Please Enter Book Name" });
+  }
+
+  // check price is written and if not give error if Please Enter Book Rate
+  if (!price) {
+    return res.status(400).json({ error: "Please Enter Book Price" });
+  }
+
+  // check price is not a number and if not give error if Book price must be digits
+  if (isNaN(Object.values(newBook)[2])) {
+    // it checks book_rate is not number
+    return res.status(400).json({ error: "Book Price must be digits" });
+  }
+
+  books.push(newBook); //push new book data to books object
+  res.status(200).json(newBook);
+});
+
 export default router;
