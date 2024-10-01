@@ -13,4 +13,16 @@ router.get("/api/books", (req, res) => {
   res.status(200).json(books);
 });
 
+// FOR GET SINGLE BOOK DATA BY ID
+router.get("/:id", (req, res) => {
+  let id = parseInt(req.params.id);
+  let book = books.find((book) => book.id === id);
+
+  if (book) {
+    return res.status(200).json(book);
+  }
+
+  res.status(404).json({ error: "User not found" });
+});
+
 export default router;
