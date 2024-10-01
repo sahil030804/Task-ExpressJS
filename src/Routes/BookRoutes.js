@@ -95,4 +95,18 @@ router.put("/:id", (req, res) => {
   res.status(200).json(book);
 });
 
+// FOR DELETE SINGLE BOOK DATA USING DELETE
+router.delete("/:id", (req, res) => {
+  let id = parseInt(req.params.id); // store id from url params
+  let bookIndex = books.findIndex((book) => book.book_id === id); //find index of id which is pass through url params
+
+  // check if book index is available or not and if not then display error of Book id not found
+  if (bookIndex === -1) {
+    return res.status(404).json({ error: "Book id not found" });
+  }
+
+  books.splice(bookIndex, 1); // delete book data if id is available
+  res.status(200).json(books);
+});
+
 export default router;
