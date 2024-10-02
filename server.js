@@ -1,7 +1,7 @@
 import express from "express";
 import books from "./src/Routes/BookRoutes.js"; // import module from './src/Routes/BookRoutes.js'
 
-const PORT = process.env.PORT; // access port from env file
+const PORT = process.env.PORT || 8080; // access port from env file
 
 const app = express();
 
