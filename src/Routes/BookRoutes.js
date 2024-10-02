@@ -22,7 +22,7 @@ router.get("/book/:id", (req, res) => {
     return res.status(200).json(book);
   }
 
-  res.status(404).json({ error: "User not found" });
+  res.status(404).json({ error: "Book not found" });
 });
 
 // FOR POST/CREATE SINGLE BOOK DATA
