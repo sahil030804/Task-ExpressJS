@@ -26,7 +26,7 @@ router.get("/book/:id", (req, res) => {
 });
 
 // FOR POST/CREATE SINGLE BOOK DATA
-router.post("/", (req, res) => {
+router.post("/books", (req, res) => {
   let { name, price } = req.body;
 
   let newBook = {
