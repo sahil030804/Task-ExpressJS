@@ -53,7 +53,7 @@ router.post("/books", (req, res) => {
   }
 
   // check price is not a number and if not give error if Book price must be digits
-  if (isNaN(Object.values(newBook)[2])) {
+  if (isNaN(newBook.price)) {
     // it checks book_rate is not number
     return res.status(400).json({ error: "Book Price must be digits" });
   }
