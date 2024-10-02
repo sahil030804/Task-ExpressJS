@@ -63,37 +63,66 @@ router.post("/books", (req, res) => {
 });
 
 // FOR UPDATE SINGLE BOOK DATA USING PUT
-router.put("/:id", (req, res) => {
-  let id = parseInt(req.params.id); // Fetch id from url params
-  let book = books.find((book) => book.id === id); // find book which id is match with params id
-
+router.put("/book/:id", (req, res) => {
   let { name, price } = req.body; // create variables from req.body
 
-  // check Book is available or not for updating
-  if (!book) {
-    res.status(400).json({ error: "Book Not Found" });
+  let id = req.params.id;
+  let bookIndex = books.findIndex((book) => book.id == id);
+  console.log(books[bookIndex]);
+
+  if (bookIndex === -1) {
+    return res.status(400).json({ error: "Book id not found" });
   }
 
-  // Check if name is provided and not an empty string or whitespace
   if (name) {
     if (name.trim() === "") {
-      return res.status(400).json({ error: "Book name can't be empty" });
-    } else {
-      book.name = name; // If valid, update the book name with body name
+      return res.status(400).json({ error: "Book name can't be null / empty" });
     }
+    books[bookIndex].name = name;
   }
 
-  // Check if price is provided and is a valid number
   if (price) {
     if (isNaN(price)) {
-      return res.status(400).json({ error: "Book Price must be a number" });
-    } else {
-      book.price = parseFloat(price); // If valid, update the book price with body price
+      return res.status(400).json({ error: "Book price must be numbers" });
     }
+    books[bookIndex].price = parseFloat(price);
   }
 
-  res.status(200).json(book);
+  res.status(200).json(books[bookIndex]);
 });
+
+// router.put("/:id", (req, res) => {
+//   let id = parseInt(req.params.id); // Fetch id from url params
+//   let book = books.find((book) => book.id === id); // find book which id is match with params id
+
+//   let { name, price } = req.body; // create variables from req.body
+
+//   // check Book is available or not for updating
+//   if (!book) {
+//     res.status(400).json({ error: "Book Not Found" });
+//   }
+
+//   // Check if name is provided and not an empty string or whitespace
+//   if (name) {
+//     if (name.trim() === "") {
+//       return res.status(400).json({ error: "Book name can't be empty" });
+//     } else {
+//       book.name = name; // If valid, update the book name with body name
+//     }
+//   }
+
+//   // Check if price is provided and is a valid number
+//   if (price) {
+//     if (isNaN(price)) {
+//       return res.status(400).json({ error: "Book Price must be a number" });
+//     } else {
+//       book.price = parseFloat(price); // If valid, update the book price with body price
+//     }
+//   }
+
+//   res.status(200).json(book);
+// });
+
 
 // FOR DELETE SINGLE BOOK DATA USING DELETE
 router.delete("/:id", (req, res) => {
