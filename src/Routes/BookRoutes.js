@@ -15,8 +15,8 @@ router.get("/books", (req, res) => {
 
 // FOR GET SINGLE BOOK DATA BY ID
 router.get("/book/:id", (req, res) => {
-  let id = parseInt(req.params.id);
-  let book = books.find((book) => book.id === id);
+  let id = req.params.id;
+  let book = books.find((book) => book.id == id);
 
   if (book) {
     return res.status(200).json(book);
