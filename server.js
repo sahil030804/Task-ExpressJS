@@ -12,10 +12,8 @@ app.use(express.json());
 // UrlEncoded turn false
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/api/books", books);
-
 // Uses route module for access all routes after this url ('/api/book')
-app.use("/api/book", books);
+app.use("/api", books);
 
 app.listen(PORT, () => {
   console.log(`Server Is Running On PORT ${PORT}`);

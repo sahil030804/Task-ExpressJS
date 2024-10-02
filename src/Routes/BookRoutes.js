@@ -9,7 +9,7 @@ let books = [
 ];
 
 // FOR GET ALL BOOKS DATA
-router.get("/api/books", (req, res) => {
+router.get("/books", (req, res) => {
   res.status(200).json(books);
 });
 
