@@ -123,11 +123,10 @@ router.put("/book/:id", (req, res) => {
 //   res.status(200).json(book);
 // });
 
-
 // FOR DELETE SINGLE BOOK DATA USING DELETE
-router.delete("/:id", (req, res) => {
-  let id = parseInt(req.params.id); // store id from url params
-  let bookIndex = books.findIndex((book) => book.book_id === id); //find index of id which is pass through url params
+router.delete("/book/:id", (req, res) => {
+  let id = req.params.id; // store id from url params
+  let bookIndex = books.findIndex((book) => book.id == id); //find index of id which is pass through url params
 
   // check if book index is available or not and if not then display error of Book id not found
   if (bookIndex === -1) {
