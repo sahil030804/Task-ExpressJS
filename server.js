@@ -1,5 +1,8 @@
 import express from "express";
-import books from "./src/Routes/BookRoutes.js"; // import module from './src/Routes/BookRoutes.js'
+import dotenv from "dotenv-safe";
+import books from "./src/routes/bookRoutes.js"; // import module from './src/Routes/BookRoutes.js'
+
+dotenv.config();
 
 const PORT = process.env.PORT || 8080; // access port from env file
 
