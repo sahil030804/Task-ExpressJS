@@ -68,7 +68,6 @@ router.put("/book/:id", (req, res) => {
 
   let id = req.params.id;
   let bookIndex = books.findIndex((book) => book.id == id);
-  console.log(books[bookIndex]);
 
   if (bookIndex === -1) {
     return res.status(400).json({ error: "Book id not found" });
