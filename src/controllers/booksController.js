@@ -10,7 +10,7 @@ const getSingleBook = (req, res) => {
   res.status(200).json(book);
 };
 
-const addSingleBook = async (req, res) => {
+const addSingleBook = (req, res) => {
   const { name, price } = req.body;
   let newBook = booksServices.addSingleBook(name, price);
   res.status(200).json(newBook);
