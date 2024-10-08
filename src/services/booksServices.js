@@ -1,5 +1,3 @@
-
-
 let books = [
   { id: "1", name: "book 1", price: "999" },
   { id: "2", name: "book 2", price: "899" },
@@ -9,7 +7,8 @@ let books = [
 const getAllBooks = () => books;
 
 const getSingleBook = (id) => {
-  return books.find((book) => book.id === id);
+  let book = books.find((book) => book.id === id);
+  return book;
 };
 
 const addSingleBook = (name, price) => {
@@ -25,12 +24,22 @@ const addSingleBook = (name, price) => {
 
 const updateSingleBook = (id, name, price) => {
   const bookIndex = books.findIndex((book) => book.id === id);
-  books[bookIndex].name = name; // update book name
-  books[bookIndex].price = price; // update book price
+
+  // Check if name is provided and not an empty string or whitespace
+  if (name) {
+    books[bookIndex].name = name;
+  }
+  // Check if price is provided and is a valid number
+  if (price) {
+    books[bookIndex].price = price;
+  }
+
   return books[bookIndex];
 };
 
 const deleteSingleBook = (id) => {
+  const bookIndex = books.findIndex((book) => book.id === id);
+
   books.splice(bookIndex, 1);
   return books;
 };
