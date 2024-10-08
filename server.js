@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv-safe";
-import books from "./src/routes/bookRoutes.js"; // import module from './src/Routes/BookRoutes.js'
+import books from "./src/routes/BookRoutes.js"; // import module from './src/Routes/BookRoutes.js'
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Uses route module for access all routes after this url ('/api/book')
-app.use("/api", books);
+app.use("/api",books);
 
 app.listen(PORT, () => {
   console.log(`Server Is Running On PORT ${PORT}`);
