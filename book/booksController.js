@@ -1,4 +1,4 @@
-import booksServices from "../services/booksServices.js";
+import booksServices from "./booksServices.js";
 
 const getAllBooks = (req, res) => {
   const books = booksServices.getAllBooks();
@@ -16,7 +16,7 @@ const addSingleBook = (req, res) => {
   res.status(200).json(newBook);
 };
 
-const updateSingleBook = async (req, res) => {
+const updateSingleBook = (req, res) => {
   const { name, price } = req.body;
   let book = booksServices.updateSingleBook(req.params.id, name, price);
   res.status(200).json(book);
