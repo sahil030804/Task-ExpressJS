@@ -8,6 +8,9 @@ const getAllBooks = () => books;
 
 const getSingleBook = (id) => {
   let book = books.find((book) => book.id === id);
+  if (!book) {
+    return { error: `Book not found with id ${id}` };
+  }
   return book;
 };
 
@@ -25,6 +28,10 @@ const addSingleBook = (name, price) => {
 const updateSingleBook = (id, name, price) => {
   const bookIndex = books.findIndex((book) => book.id === id);
 
+  if (bookIndex === -1) {
+    return { error: `Book not found with id ${id}` };
+  }
+
   // Check if name is provided and not an empty string or whitespace
   if (name) {
     books[bookIndex].name = name;
@@ -39,6 +46,10 @@ const updateSingleBook = (id, name, price) => {
 
 const deleteSingleBook = (id) => {
   const bookIndex = books.findIndex((book) => book.id === id);
+
+  if (bookIndex === -1) {
+    return { error: `Book not found with id ${id}` };
+  }
 
   books.splice(bookIndex, 1);
   return books;
