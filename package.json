@@ -1,0 +1,20 @@
+{
+  "name": "task-expressjs",
+  "version": "1.0.0",
+  "description": "Create Book API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Sahil",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "dotenv-safe": "^9.1.0",
+    "express": "^4.21.0",
+    "joi": "^17.13.3",
+    "nodemon": "^3.1.7",
+    "yup": "^1.4.0"
+  }
+}
