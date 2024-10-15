@@ -1,7 +1,7 @@
-let books = [
-  { id: "1", name: "book 1", price: "999" },
-  { id: "2", name: "book 2", price: "899" },
-  { id: "3", name: "book 3", price: "1099" },
+export const books = [
+  { id: "1", name: "Hobbit", price: "999" },
+  { id: "2", name: "Lord of the rings", price: "899" },
+  { id: "3", name: "Vikings", price: "1099" },
 ];
 
 const getAllBooks = () => books;
@@ -27,29 +27,19 @@ const addSingleBook = (name, price) => {
 
 const updateSingleBook = (id, name, price) => {
   const bookIndex = books.findIndex((book) => book.id === id);
-
-  if (bookIndex === -1) {
-    return { error: `Book not found with id ${id}` };
-  }
-
-  // Check if name is provided and not an empty string or whitespace
   if (name) {
+    // Check if name is provided and change its value
     books[bookIndex].name = name;
   }
-  // Check if price is provided and is a valid number
+  // Check if price is provided and change its value
   if (price) {
     books[bookIndex].price = price;
   }
-
   return books[bookIndex];
 };
 
 const deleteSingleBook = (id) => {
   const bookIndex = books.findIndex((book) => book.id === id);
-
-  if (bookIndex === -1) {
-    return { error: `Book not found with id ${id}` };
-  }
 
   books.splice(bookIndex, 1);
   return books;
