@@ -8,9 +8,6 @@ const getAllBooks = () => books;
 
 const getSingleBook = (id) => {
   let book = books.find((book) => book.id === id);
-  if (!book) {
-    return { error: `Book not found with id ${id}` };
-  }
   return book;
 };
 
