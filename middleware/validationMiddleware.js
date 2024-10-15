@@ -3,11 +3,11 @@ import { books } from "../book/booksServices.js";
 const validate = (schema) => {
   return async (req, res, next) => {
     try {
-      // await schema.validate(req.body);
-      await schema.validate(req.body, { abortEarly: false }); // { abortEarly: false } this disable abort after first validation in unsuccessfull and run second validation and give both error at same time if occur
+      await schema.validateAsync(req.body, { abortEarly: false }); // abortearly for stopping code to be exit when one error occur then show all errors in array in object
       next();
-    } catch (err) {
-      res.status(400).json({ error: err.errors });
+    } catch (error) {
+      const errorMessage = error.details.map((detail)=>detail.message);
+      res.status(400).json({ error: errorMessage });
     }
   };
 };
